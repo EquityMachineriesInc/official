@@ -1,0 +1,1304 @@
+:root {
+  --primary-green: #0b6623;
+  --dark-green: #074417;
+  --accent-orange: #f37021;
+  --light-bg: #f4f7f5;
+  --white: #ffffff;
+  --text-dark: #222222;
+  --text-muted: #555555;
+  --border-color: #dce4de;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sticky Wrapper sa Pinakataas */
+.floating-nav-wrapper {
+  position: sticky;
+  top: 10px;
+  z-index: 1000;
+  padding: 0 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Ang Floating White Navigation Bar */
+.floating-nav {
+  max-width: 920px;
+  margin: 0 auto;
+  background-color: var(--primary-green);
+  border-radius: 10px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.12);
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-items > li {
+  position: relative;
+}
+
+/* Bawat Menu Link na may Icon */
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 18px 4px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-item i {
+  font-size: 1rem;
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+
+.nav-item .arrow-icon {
+  font-size: 0.72rem;
+  margin-left: 2px;
+  transition: transform 0.2s ease;
+}
+
+/* Hover at Active State (Gaya ng "Home" sa litrato) */
+.nav-item:hover,
+.nav-item.active {
+  color: #ffa500; /* Puwedeng palitan ng #3b5bfd kung mas gusto mo ang blue sa litrato */
+  font-weight: 600;
+}
+
+.nav-item:hover i,
+.nav-item.active i {
+  color: #ffa500;
+}
+
+/* Ang Makapal na Guhit sa Ilalim ng Active Menu */
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3.5px;
+  background-color: #ffffff;
+  border-radius: 3px 3px 0 0;
+  transition: width 0.25s ease;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  width: 100%;
+}
+
+/* Mobile Circular Hamburger Button (Gaya ng nasa kaliwa sa litrato) */
+.mobile-menu-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #808080;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #0e6b2b;
+  font-size: 1.2rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Responsive Layout */
+@media (max-width: 768px) {
+  .floating-nav {
+    background: transparent;
+    box-shadow: none;
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .nav-items {
+    position: absolute;
+    top: 56px;
+    left: 16px;
+    width: 240px;
+    background-color: #808080;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 0;
+    display: none;
+  }
+
+  .nav-items.show {
+    display: flex;
+  }
+
+  .nav-item {
+    padding: 13px 18px;
+  }
+
+  .nav-item::after {
+    display: none; /* Itago ang bottom bar sa vertical mobile menu */
+  }
+
+  .nav-item.active {
+    background-color: #f0fdf4;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background-color: #f9fafb;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+    padding-left: 16px;
+  }
+
+  .has-dropdown.open .dropdown-menu {
+    display: block;
+  }
+}
+
+section {
+  padding: 1rem 5%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+body {
+  background-color: #e4e2e2;
+  color: var(--text-dark);
+  line-height: 2.0;
+}
+
+/* Navigation Bar */
+header {
+  background-color: var(--primary-green);
+  color: var(--white);
+  padding: 1rem 2%;
+  top: 0;
+  left:0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: justify;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo with Image */
+
+.logo-link {
+  display: flex;
+  gap: 1.85rem;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.header-logo {
+  height: 150px;
+  width: auto;
+  background-color: var(--primary-green);
+  padding: 4px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.logo-text h1 {
+  font-size: 4rem;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  text-align: centers
+}
+
+.logo-text em{
+  font-size: 2rem;
+  color: black;
+  display: block;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.5rem 2%;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--accent-orange);
+}
+
+/* Hero Section */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 700px; /* Taas ng slider, puwedeng i-adjust */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* Container na gumagalaw pakaliwa at pakanan */
+.slides-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  z-index: 1;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-color: #0e6b2b; /* Fallback color habang naglo-load ang image */
+}
+
+/* Dark Green Tint Overlay */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(10, 65, 28, 0.78), rgba(14, 107, 43, 0.72));
+  z-index: 2;
+}
+
+/* Left & Right Arrow Buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.slider-btn:hover {
+  background-color: rgba(14, 107, 43, 0.9);
+}
+
+.prev-btn {
+  left: 18px;
+}
+
+.next-btn {
+  right: 18px;
+}
+
+/* Dots sa Ilalim */
+.slider-dots {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.dot.active {
+  background-color: #f59e0b;
+  transform: scale(1.2);
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .hero-slider {
+    height: 460px;
+  }
+
+  .hero-content {
+    padding: 0 42px;
+  }
+
+  .hero-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .slider-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .prev-btn { left: 8px; }
+  .next-btn { right: 8px; }
+}
+
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--accent-orange);
+  color: var(--white);
+  padding: 0.75rem 1.75rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid var(--accent-orange);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: #d95d12;
+  border-color: #d95d12;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--white);
+}
+
+.btn-outline:hover {
+  background-color: var(--white);
+  color: var(--primary-green);
+  border-color: var(--white);
+}
+
+.btn-small {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Section Styling */
+section {
+  padding: 4rem 5%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+
+.section-title h2 {
+  font-size: 2rem;
+  color: var(--primary-green);
+  margin-bottom: 0.5rem;
+}
+
+.section-title p {
+  color: var(--text-muted);
+}
+
+/* About Section */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.about-text {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+
+.about-text h3 {
+  color: var(--primary-green);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+/* VISION*/
+
+.vision-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vision {
+  background: var(--white);
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--accent-orange);
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+
+.vision h4 {
+  color: var(--primary-green);
+  margin-bottom: 0.2rem;
+}
+
+.vision p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+/* MISSION */
+
+.mission-highlights{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mission {
+  background: var(--white);
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--accent-orange);
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+.mission h4 {
+  color: var(--primary-green);
+  margin-bottom: 0.2rem;
+}
+.mission p {
+  font-size: 0.92rem;
+  color: var(--text-muted)
+}
+.mission span {
+  display: block;
+  margin-bottom: 8px;
+  line-height: 1.5;
+  color: #1f2937;
+}
+
+/* core values */
+
+.corevalues-highlights{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.corevalues {
+  background: var(--white);
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--accent-orange);
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+.corevalues h4 {
+  color: var(--primary-green);
+  margin-bottom: 0.2rem;
+  
+}
+.corevalues span {
+  display: block;
+  margin-bottom: 8px;
+  line-height: 1.5;
+  color: #1f2937;
+}
+
+
+/* Filter Buttons */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  border: 2px solid var(--primary-green);
+  background: var(--white);
+  color: var(--primary-green);
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--primary-green);
+  color: var(--white);
+}
+/* Branch Filter Tabs & Search */
+.branch-controls {
+  max-width: 950px;
+  margin: 0 auto 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  border: 1px solid #2d6a4f;
+  background: transparent;
+  color: #1b4332;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+  background: #2d6a4f;
+  color: #fff;
+}
+
+.branch-search {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+  min-width: 230px;
+}
+
+/* Clean Minimalist Branch Directory (No Boxes) */
+.directory-wrapper {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.province-group {
+  margin-bottom: 35px;
+}
+
+.province-header {
+  font-size: 17px;
+  color: #1b4332;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #2d6a4f;
+  margin-bottom: 5px;
+}
+
+.branch-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1.7fr 1fr;
+  gap: 15px;
+  padding: 14px 8px;
+  border-bottom: 1px solid #dce3e8;
+  align-items: center;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.branch-row:hover {
+  background-color: #eaf4ee;
+}
+
+.branch-name {
+  color: #1b4332;
+}
+
+.branch-addr {
+  color: #555;
+}
+
+.branch-tel {
+  text-align: right;
+  font-weight: bold;
+}
+
+.branch-tel a {
+  color: #2d6a4f;
+  text-decoration: none;
+}
+
+.branch-tel a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .branch-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .branch-tel {
+    text-align: left;
+  }
+  .branch-search {
+    width: 100%;
+  }
+}
+
+
+/* Grid Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-body {
+  padding: 1.25rem 1.5rem 0.5rem;
+}
+
+.badge {
+  display: inline-block;
+  background: #e8f5e9;
+  color: var(--primary-green);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 0.65rem;
+  width: fit-content;
+}
+
+.card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.card p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.card-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  background-color: #fafcfb;
+}
+
+/* Service Booking Section */
+.service-container {
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  max-width: 850px;
+  margin: auto;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group {
+  margin-bottom: 1.15rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-green);
+}
+
+/* Search Box for Branches */
+.branch-section {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 15px;
+  font-family: sans-serif;
+}
+
+/* Search & Filter Bar */
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+#branchSearch {
+  padding: 8px 14px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  width: 260px;
+  max-width: 100%;
+}
+
+#branchSearch:focus {
+  outline: none;
+  border-color: #0e6b2b;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-btn {
+  padding: 7px 14px;
+  border: 1px solid #0e6b2b;
+  background-color: #ffffff;
+  color: #0e6b2b;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: #0e6b2b;
+  color: #ffffff;
+}
+
+/* Compact Branch Cards */
+.branch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px;
+}
+
+.branch-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid #0e6b2b;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 10px 12px;
+}
+
+.province-badge {
+  display: inline-block;
+  background-color: #e6f4ea;
+  color: #0e6b2b;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.branch-card h3 {
+  margin: 0 0 5px;
+  font-size: 0.92rem;
+  color: #1f2937;
+}
+
+.address {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #555555;
+  line-height: 1.35;
+}
+
+.address i {
+  color: #dc2626;
+  margin-right: 4px;
+}
+
+.card-footer {
+  border-top: 1px solid #f0f0f0;
+  padding: 7px 12px;
+  font-size: 0.76rem;
+  color: #374151;
+  background-color: #fafafa;
+}
+
+.card-footer i {
+  color: #0e6b2b;
+  margin-right: 5px;
+}
+
+.no-results {
+  text-align: center;
+  color: #666666;
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+
+/* Modal for Inquiry */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 450px;
+  width: 100%;
+  position: relative;
+}
+
+.modal-title {
+  color: var(--primary-green);
+  margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+/* Para maging maayos ang itsura sa cellphone (Mobile Responsive) */
+@media (max-width: 1080px) {
+  .image-text-container {
+    flex-direction: column;
+  }
+
+  .left-image,
+  .right-text {
+    width: 100%;
+  }
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark-green);
+  color: var(--white);
+  text-align: center;
+  padding: 2.5rem 5%;
+  margin-top: 3rem;
+}
+
+footer p {
+  font-size: 0.9rem;
+  color: #c8e6c9;
+  margin-top: 0.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 0.65rem;
+    text-align: center;
+  }
+  nav {
+    justify-content: center;
+    gap: 0.85rem;
+  }
+  .about-grid,
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .hero h2 {
+    font-size: 1.85rem;
+  }
+  .service-container {
+    padding: 1.5rem;
+  }
+}
+
+/* Social Media Links in Footer */
+.social-links .fa-facebook {
+  color: #1877F2;
+}
+
+.social-links .fa-youtube {
+  color: #FF0000;
+}
+
+.social-links .fa-instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+.copyright {
+  border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+  padding-top: 1rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+/* Pure Image Product Gallery (Walang text sa ibabaw ng picture) */
+.product-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-pic-card {
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--white);
+  border: 2px solid var(--border-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  height: 240px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-pic-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-orange);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+.product-pic-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.product-pic-card:hover img {
+  transform: scale(1.06);
+}
+
+/* FOOTER STYLE */
+
+.contact-footer {
+  background-color: #0b4d1e; /* Eksaktong dark green sa litrato */
+  color: #ffffff;
+  text-align: center;
+  padding: 28px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-content {
+  max-width: 950px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Address Line */
+.footer-address {
+  margin: 0;
+  font-size: 0.98rem;
+  color: #e8f5e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.footer-address i {
+  color: #f59e0b; /* Gold accent para litaw ang location pin */
+  font-size: 1.05rem;
+}
+
+/* Hotline & Email Line */
+.footer-contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.98rem;
+}
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.contact-item i {
+  color: #4ade80; /* Light green icon para malinaw sa dark background */
+}
+
+.contact-item a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-item a:hover {
+  color: #f59e0b;
+  text-decoration: underline;
+}
+
+.divider {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Social Media Icons sa Ilalim */
+.footer-socials {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.social-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-circle:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+.social-circle.fb { background-color: #1877F2; }
+.social-circle.tt { background-color: #000000; border: 1px solid rgba(255,255,255,0.25); }
+.social-circle.yt { background-color: #FF0000; }
+
+/* Mobile Responsive */
+@media (max-width: 650px) {
+  .divider {
+    display: none;
+  }
+
+  .footer-contact-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-address,
+  .footer-contact-row {
+    font-size: 0.9rem;
+  }
+}
+
+/* pop up product specs */
+.specs-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.specs-modal-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.close-specs-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #555;
+}
+
+.specs-modal-content img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  background: #f8f9fa;
+}
+
+.specs-list-box {
+  background: #f4f6f8;
+  padding: 12px 18px;
+  border-radius: 6px;
+  margin: 15px 0;
+}
+
+.specs-list-box ul {
+  margin: 8px 0 0 18px;
+  padding: 0;
+}
+
+.specs-list-box li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.inquire-from-specs-btn {
+  width: 100%;
+  padding: 12px;
+  background: #d9534f; /* Palitan ng brand color ninyo */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
