@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Equity Machineries, Inc. | Kumpanyang Mapagkakatiwalaan</title>
-  <link rel="stylesheet" href="https://cloudflare.com" />
   <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/a6f09e17e1.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -16,7 +16,6 @@
       <div class="brand-section">
         <div class="logo-box">
           <img src="emi_logo.png" alt="Equity Machineries Logo" class="company-logo" />
-          <span class="since-text">SINCE 1975</span>
         </div>
         <div class="brand-text">
           <h1>EQUITY MACHINERIES, INC.</h1>
@@ -44,29 +43,28 @@
       </nav>
     </div>
   </header>
+  
+  <!-- hero slides-->
+  <div class="hero-slider" id="home">
+    
+  <!-- Mga Background Slides -->
+  <div class="slides-container" id="slidesContainer">
+    <div class="slide active" style="background-image: url('img/emiban2.png');"></div>
+    <div class="slide" style="background-image: url('img/emi3ban.png');"></div>
+    <div class="slide" style="background-image: url('img/emiban3.png');"></div>
+  </div>
 
-  <!-- HERO SLIDER -->
-  <section id="home" class="hero-slider">
-    <div class="slides-container" id="slidesContainer">
-      <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('img/banner1.jpg');">
-        <div class="slide-content">
-          <h2>Maaasahang Kagamitan sa Pagsasaka</h2>
-          <p>Authorized Dealer ng Kubota Harvesters, Tractors, Transplanters, at Honda Motorcycles.</p>
-          <a href="#products" class="btn">Tingnan ang mga Units</a>
-        </div>
-      </div>
-      <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('img/banner2.jpg');">
-        <div class="slide-content">
-          <h2>Malawak na Serbisyo sa Buong Rehiyon</h2>
-          <p>May mga branches sa Isabela, Cagayan, Nueva Vizcaya, at iba pang probinsya.</p>
-          <a href="#branches" class="btn">Hanapin ang Branch</a>
-        </div>
-      </div>
-    </div>
-    <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
-    <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
-    <div class="slider-dots" id="sliderDots"></div>
-  </section>
+  <!-- Left & Right Slide Arrows -->
+  <button class="slider-btn prev-btn" onclick="changeSlide(-1)" aria-label="Previous Slide">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  <button class="slider-btn next-btn" onclick="changeSlide(1)" aria-label="Next Slide">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+
+  <!-- Dots Indicator sa Ilalim -->
+  <div class="slider-dots" id="sliderDots"></div>
+</div>
 
   <!-- PRODUCTS SECTION -->
   <section id="products" class="section">

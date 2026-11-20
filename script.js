@@ -317,38 +317,44 @@ async function sendFormDataToEmail(form, subject, successMsg, extraData, onDone)
   const oldText = btn ? btn.textContent : "";
   if (btn) {
     btn.disabled = true;
-  btn.textContent = "Sending...";
+    btn.textContent = "Sending...";
+  }
+
+  const payload = Object.assign(
+    { _subject: subject, _template: "table", _captcha: "false" },
+    extraData || {}
+  );
+
+  new FormData(form).forEach(function (val, key) {
+    payload[key.replace(/[^a-zA-Z0-9_]/g, "_")] = val;
+  });
+
+  try {
+    const res = await fetch("https://formsubmit.co" + COMPANY_EMAIL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+
+    if (res.ok && (data.success === "true" || data.success === true)) {
+      alert(successMsg);
+      form.reset();
+      if (onDone) onDone();
+    } else {
+      throw new Error(data.message || "Hindi naipadala ang email.");
+    }
+  } catch (err) {
+    alert("Error: " + err.message + "\n\nTumawag sa (078) 652-2214.");
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = oldText;
+    }
+  }
 }
-const payload = Object.assign(
-{ _subject: subject, _template: "table", _captcha: "false" },
-extraData || {}
-);
-new FormData(form).forEach(function (val, key) {
-payload[key.replace(/[^a-zA-Z0-9_]/g, "_")] = val;
-});
-try {
-const res = await fetch("formsubmit.co" + COMPANY_EMAIL, {
-method: "POST",
-headers: { "Content-Type": "application/json", Accept: "application/json" },
-body: JSON.stringify(payload)
-});
-const data = await res.json();
-if (res.ok && (data.success === "true" || data.success === true)) {
-alert(successMsg);
-form.reset();
-if (onDone) onDone();
-} else {
-throw new Error(data.message || "Hindi naipadala ang email.");
-}
-} catch (err) {
-alert("Error: " + err.message + "\n\nTumawag sa (078) 652-2214.");
-} finally {
-if (btn) {
-btn.disabled = false;
-btn.textContent = oldText;
-}
-}
-}
+
 
 // 8. HERO SLIDER & PAGE INIT
 let currentSlide = 0;
@@ -359,6 +365,7 @@ if (!container || slides.length === 0) return;
 currentSlide = (currentSlide + dir + slides.length) % slides.length;
 container.style.transform = "translateX(-" + currentSlide * 100 + "%)";
 }
+
 document.addEventListener("DOMContentLoaded", function () {
 displayProducts(products);
 displayBranches(branchList);
