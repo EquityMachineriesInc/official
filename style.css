@@ -1,0 +1,1348 @@
+:root {
+  --primary-green: #0b6623;
+  --dark-green: #074417;
+  --accent-orange: #f37021;
+  --light-bg: #858585;
+  --white: #ffffff;
+  --text-dark: #222222;
+  --text-muted: #555555;
+  --border-color: #dce4de;
+}
+
+/* RESET & BASE STYLES */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f4f6f8;
+  color: #222;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* MAIN HEADER */
+.main-header {
+  background-color: #166527;
+  color: #ffffff;
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.company-logo {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.since-text {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  margin-top: 2px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.brand-text h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  color: #ffffff;
+  margin: 0;
+}
+
+.brand-text .tagline {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #0d2b14;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-item {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-item:hover {
+  color: #f5b82e;
+}
+
+.nav-item.active {
+  color: #f5b82e;
+  border-bottom: 2px solid #ffffff;
+}
+
+/* Hero Section */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 700px; /* Taas ng slider, puwedeng i-adjust */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+/* Container na gumagalaw pakaliwa at pakanan */
+.slides-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  z-index: 1;
+}
+
+.slide {
+  flex: 0 0 100%; /* IMPORTANTE: Pinipigilan nitong maipit o mag-shrink ang bawat slide sa loob ng flex container */
+  width: 100%;
+  height: 100%; /* Mas magandang 100% para sundin ang height ng .slides-container */
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+
+/* Dark Green Tint Overlay */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(10, 65, 28, 0.78), rgba(14, 107, 43, 0.72));
+  z-index: 2;
+}
+
+/* Left & Right Arrow Buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.slider-btn:hover {
+  background-color: rgba(14, 107, 43, 0.9);
+}
+
+.prev-btn {
+  left: 18px;
+}
+
+.next-btn {
+  right: 18px;
+}
+
+/* Dots sa Ilalim */
+.slider-dots {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.dot.active {
+  background-color: #f59e0b;
+  transform: scale(1.2);
+}
+
+/* About Section */
+.about-section {
+  background-color: #eceeee;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #4a4a4a;
+}
+
+.about-container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Header */
+.about-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-header h2 {
+  color: #145a28;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.about-header p {
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Grid Layout */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Left Card: Story */
+.story-card {
+  background-color: #ffffff;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.story-card h3 {
+  color: #145a28;
+  font-size: 1.35rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.story-card p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 18px;
+  color: #555555;
+}
+
+/* Right Column Cards */
+.vmv-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.vmv-card {
+  background-color: #ffffff;
+  padding: 25px 28px;
+  border-radius: 10px;
+  border-left: 5px solid #f37021; /* Kubota / EMI Orange Accent */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.vmv-card h4 {
+  color: #145a28;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.vmv-card h4.title-case {
+  font-size: 1.05rem;
+  letter-spacing: 0;
+}
+
+.vmv-card p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+  color: #555555;
+}
+
+.vmv-card ol {
+  margin: 8px 0 0 0;
+  padding-left: 20px;
+}
+
+.vmv-card ol li {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+/* Responsive para sa Mobile */
+@media (max-width: 850px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* SECTIONS & BUTTONS */
+.section {
+  padding: 60px 0;
+}
+
+.bg-light {
+  background-color: #eaeef2;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.9rem;
+  color: #166527;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #d9531e;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #b84214;
+}
+
+.btn:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+.btn-small {
+  padding: 7px 14px;
+  font-size: 0.9rem;
+}
+
+/* FILTER BAR */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 1px solid #166527;
+  background: #fff;
+  color: #166527;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: #166527;
+  color: #fff;
+}
+
+/* CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-img {
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+  background: #f9f9f9;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.card-img:hover {
+  transform: scale(1.04);
+  opacity: 0.9;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.badge {
+  display: inline-block;
+  background: #e1f3e8;
+  color: #166527;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.card-body h3 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.card-body p {
+  font-size: 0.92rem;
+  color: #555;
+}
+
+.card-footer {
+  padding: 12px 16px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+/* SEARCH & FORMS */
+.search-box {
+  max-width: 500px;
+  margin: 0 auto 25px auto;
+}
+
+.search-box input,
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.form-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+/* MODALS */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+.specs-modal-img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 10px;
+}
+
+.specs-desc {
+  color: #555;
+  font-size: 0.95rem;
+  margin: 8px 0 14px 0;
+}
+
+.specs-heading {
+  color: #166527;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.specs-list {
+  padding-left: 20px;
+  color: #333;
+  font-size: 0.92rem;
+}
+
+.specs-list li {
+  margin-bottom: 6px;
+}
+
+.selected-unit-label {
+  font-weight: bold;
+  color: #166527;
+  margin: 8px 0 16px 0;
+}
+
+/* FOOTER */
+.footer {
+  background: #166527;
+  color: #fff;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 40px;
+}
+
+.footer h3 {
+  margin-bottom: 6px;
+}
+
+.footer p {
+  font-size: 0.92rem;
+  margin-bottom: 4px;
+}
+
+.footer .copyright {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* Social Media Links in Footer */
+.social-links .fa-facebook {
+  color: #1877F2;
+}
+
+.social-links .fa-youtube {
+  color: #FF0000;
+}
+
+.social-links .fa-instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .brand-text h1 {
+    font-size: 1.35rem;
+  }
+
+  .main-nav {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Filter Buttons */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  border: 2px solid var(--primary-green);
+  background: var(--white);
+  color: var(--primary-green);
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--primary-green);
+  color: var(--white);
+}
+/* Branch Filter Tabs & Search */
+.branch-controls {
+  max-width: 950px;
+  margin: 0 auto 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  border: 1px solid #2d6a4f;
+  background: transparent;
+  color: #1b4332;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+  background: #2d6a4f;
+  color: #fff;
+}
+
+.branch-search {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+  min-width: 230px;
+}
+
+/* Clean Minimalist Branch Directory (No Boxes) */
+.directory-wrapper {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.province-group {
+  margin-bottom: 35px;
+}
+
+.province-header {
+  font-size: 17px;
+  color: #1b4332;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #2d6a4f;
+  margin-bottom: 5px;
+}
+
+.branch-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1.7fr 1fr;
+  gap: 15px;
+  padding: 14px 8px;
+  border-bottom: 1px solid #dce3e8;
+  align-items: center;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.branch-row:hover {
+  background-color: #eaf4ee;
+}
+
+.branch-name {
+  color: #1b4332;
+}
+
+.branch-addr {
+  color: #555;
+}
+
+.branch-tel {
+  text-align: right;
+  font-weight: bold;
+}
+
+.branch-tel a {
+  color: #2d6a4f;
+  text-decoration: none;
+}
+
+/* =========================================================
+   MOBILE & TABLET HEADER (768px pababa)
+   Hindi magagalaw ang Desktop View (769px pataas)
+   ========================================================= */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 8px 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .header-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  /* 1. LOGO + COMPANY NAME (Isang linya na lang, auto-scale sa screen) */
+  .brand-section {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .company-logo {
+    /* clamp(pinakamaliit, auto-scale, pinakamalaki) */
+    width: clamp(42px, 13vw, 60px) !important;
+    height: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  .brand-text {
+    text-align: left !important;
+  }
+
+  .brand-text h1 {
+    font-size: clamp(0.85rem, 3.8vw, 1.15rem) !important;
+    line-height: 1.15 !important;
+    margin: 0 !important;
+    white-space: nowrap !important; /* Para hindi maputol ang "INC." sa baba */
+  }
+
+  .brand-text .tagline {
+    font-size: clamp(0.68rem, 2.8vw, 0.85rem) !important;
+    margin: 2px 0 0 0 !important;
+  }
+
+  /* 2. NAVIGATION MENU (Isang linya lang na naka-auto fit o swipeable) */
+  .main-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 4px !important;
+    padding-top: 6px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    overflow-x: auto !important; /* Kung sobrang liit ng phone (320px), puwedeng i-swipe */
+  }
+
+  .main-nav .nav-item {
+    font-size: clamp(0.68rem, 2.7vw, 0.85rem) !important;
+    padding: 5px 6px !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+  }
+
+  .main-nav .nav-item i {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* =========================================================
+   DESKTOP ONLY (769px pataas - Hindi magagalaw ang Phone)
+   ========================================================= */
+@media (min-width: 769px) {
+  #home.hero-slider {
+    position: relative;
+    width: 85%;           /* Bawas ang lapad sa desktop */
+    max-width: 1050px;    /* Pinakamalaking lapad ng container */
+    height: 380px;        /* Mas mababang taas ng container */
+    margin: 20px auto;    /* Naka-center sa screen */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  #home .slides-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  #home .slide {
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%; /* Sakto ang buong image sa loob ng container */
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+  }
+}
+
+/* =========================================================
+   DESKTOP ONLY: 100% SAGAD ANG WIDTH, COMPACT ANG TAAS
+   ========================================================= */
+@media (min-width: 769px) {
+  #home.hero-slider,
+  .hero-slider {
+    width: 100% !important;
+    max-width: 100% !important;      /* Sagad mula kaliwa hanggang kanan ng container/screen */
+    height: 400px !important;        /* Compact na taas (palitan kung gusto ng 350px o 450px) */
+    aspect-ratio: unset !important;  /* Tinatanggal ang ratio limit para sumagad ang width */
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+  }
+
+  #home .slides-container,
+  .slides-container {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  #home .slide,
+  .slide {
+    width: 100% !important;
+    height: 100% !important;
+    background-size: 100% 100% !important; /* Sagad at kita ang buong image sa loob */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
+/* =========================================================
+   MOBILE FIRST (Portrait & Landscape): Kita ang buong banner
+   ========================================================= */
+#home.hero-slider,
+.hero-slider {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 1920 / 800 !important; /* Palitan kung mas malapad o mas matangkad ang image */
+  margin: 0 auto !important;
+  overflow: hidden !important;
+}
+
+#home .slides-container,
+.slides-container {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#home .slide,
+.slide {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-size: 100% 100% !important; /* Kita 100% ng buong image, walang crop/zoom */
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  opacity: 0 !important;
+  transition: opacity 0.5s ease-in-out !important;
+}
+
+#home .slide.active,
+.slide.active {
+  opacity: 1 !important;
+  z-index: 1 !important;
+}
+
+/* =========================================================
+   DESKTOP ONLY (769px pataas): Sagad width, compact 400px
+   ========================================================= */
+@media (min-width: 769px) {
+  #home.hero-slider,
+  .hero-slider {
+    height: 400px !important;
+    aspect-ratio: unset !important;
+  }
+}
+
+css
+/* =========================================================
+   MOBILE FIRST (Portrait & Landscape): Kita lahat ng slides
+   ========================================================= */
+#home.hero-slider,
+.hero-slider {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 1920 / 800 !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+}
+
+#home .slides-container,
+.slides-container {
+  display: flex !important;           /* Ginagawang magkakatabi para sa translateX JS */
+  width: 100% !important;
+  height: 100% !important;
+  transition: transform 0.5s ease-in-out !important;
+}
+
+#home .slide,
+.slide {
+  min-width: 100% !important;       /* Bawat slide ay 100% ng lapad ng screen */
+  width: 100% !important;
+  height: 100% !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  opacity: 1 !important;            /* Tinanggal ang opacity: 0 para laging kita */
+  visibility: visible !important;
+  background-size: 100% 100% !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* =========================================================
+   EMI FLOATING AUTO-CHAT WIDGET
+   ========================================================= */
+.emi-chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-family: Arial, sans-serif;
+}
+
+.emi-chat-toggle {
+  background: #0d5c22;
+  color: #fff;
+  border: 2px solid #f5b800;
+  border-radius: 50px;
+  padding: 12px 18px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.emi-chat-toggle:hover {
+  background: #094218;
+  transform: scale(1.04);
+}
+
+.emi-chat-box {
+  display: none;
+  flex-direction: column;
+  width: 330px;
+  max-width: 90vw;
+  height: 430px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+}
+
+.emi-chat-box.open {
+  display: flex;
+}
+
+.emi-chat-header {
+  background: #0d5c22;
+  color: #fff;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.emi-chat-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emi-chat-title i {
+  font-size: 1.4rem;
+  color: #f5b800;
+}
+
+.emi-chat-title h4 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.emi-chat-title span {
+  font-size: 0.72rem;
+  color: #d4f1db;
+}
+
+.emi-chat-header button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.emi-chat-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  background: #f7f9f8;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.emi-msg {
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  max-width: 82%;
+}
+
+.emi-msg.bot {
+  background: #e6f2e9;
+  color: #1b3a23;
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+}
+
+.emi-msg.user {
+  background: #0d5c22;
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+.emi-quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 8px 10px;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.emi-quick-replies button {
+  background: #f0f7f2;
+  border: 1px solid #0d5c22;
+  color: #0d5c22;
+  border-radius: 15px;
+  padding: 4px 9px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.emi-quick-replies button:hover {
+  background: #0d5c22;
+  color: #fff;
+}
+
+.emi-chat-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+  background: #fff;
+}
+
+.emi-chat-input input {
+  flex: 1;
+  border: none;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.emi-chat-input button {
+  background: #0d5c22;
+  color: #fff;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .emi-chat-widget {
+    bottom: 14px;
+    right: 14px;
+  }
+  .emi-chat-toggle span {
+    display: none; /* Icon lang sa phone para hindi makatakip sa screen */
+  }
+  .emi-chat-toggle {
+    padding: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-header {
+    padding: 12px 15px;
+  }
+
+  .header-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  /* Limitahan ang lapad ng logo + text para magkasya ang burger sa kanan */
+  .brand-section {
+    display: flex !important;
+    align-items: left !important;
+    gap: 10px !important;
+    flex: 1 !important;
+    min-width: 0 !important; /* Para hindi itulak pababa ang burger button */
+  }
+
+  .company-logo {
+    width: 45px !important;
+    height: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  .brand-text h1 {
+    font-size: 0.95rem !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+  }
+
+  .brand-text .tagline {
+    font-size: 0.75rem !important;
+    margin-top: 2px !important;
+  }
+
+  /* Itulak ang burger button sa kanang gilid */
+  .menu-toggle {
+    display: inline-flex !important;
+    align-items: left;
+    justify-content: left;
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #ffffff;
+    font-size: 1.3rem;
+    padding: 8px 11px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* Dropdown menu sa ilalim kapag binuksan */
+  .main-nav {
+    display: none !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    flex-basis: 100% !important; /* Babagsak sa next line kapag binuksan */
+    gap: 5px !important;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .main-nav.open {
+    display: flex !important;
+  }
+
+  .nav-item {
+    width: 100% !important;
+    padding: 10px 8px !important;
+  }
+}
+
+/* Itago sa desktop */
+.menu-toggle,
+#menuToggle {
+  display: none !important;
+}
+
+/* Ipakita lang sa mobile at tablet (768px pababa) */
+@media (max-width: 768px) {
+  .menu-toggle,
+  #menuToggle {
+    display: block !important; /* o flex !important kung kailangan nakagitna ang icon */
+  }
+}
+
+/* Desktop view: nakatago ang hamburger icon */
+.hamburger, .menu-toggle {
+  display: none;
+}
+
+/* Mobile view (768px pababa) */
+@media (max-width: 768px) {
+  header, nav, .navbar {
+    display: flex;
+    justify-content: space-between; /* Logo sa kaliwa, hamburger sa kanan */
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px 15px;
+  }
+
+  /* Hamburger button sa kanang bahagi */
+  .hamburger, .menu-toggle {
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  /* Nakatago ang links hangga't hindi pinipindot */
+  nav ul, .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  /* Lalabas ang links kapag na-tap ang hamburger */
+  nav ul.active, .nav-links.active {
+    display: flex;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
