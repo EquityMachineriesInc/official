@@ -26,7 +26,7 @@ const products = [
       "Harvesting & Capacity": [
         "Cutting Width | mm | 2,180",
         "Grain Tank Capacity | L | 1,500"
-      ]
+       ]
     }
   },
   {
@@ -36,8 +36,29 @@ const products = [
     image: "img/dcx100-ph.png",
     desc: "High-efficiency combine harvester para sa malalawak na palayan.",
     specs: {
-      "Engine": ["Engine Power | HP | 100 HP Diesel"],
-      "Features": ["Threshing System | Heavy-duty threshing system"]
+      "Drive System": [
+        "Drive type | 4WD"
+      ],
+      "Engine: [
+        "Model | V38000DI-TIE-CT4",
+        "Type | Water-cooled 4-cycle 4-cylinder vertical diesel engine (with turbocharger)",
+        "Total displacement | (L[cc]) | 3.769 (3769)",
+        "Power Output / Rotation speed | [kW{PS}(HP)/rpm] | 	73.3{99.7}(98.3)/2600",
+        "Fuel tank capacity | (L) | 140",
+        "Battery | (V/Ah) | 12/100
+      ],
+      "Dimension: [
+        "Overall length | 	(mm) | 	5175",
+        "Overall width | 	(mm) | 	2540",
+        "Overall height | (mm) | 3000",
+        "Machine Weight | (kg) | 4010
+      ]"
+      "Travel Section": [
+        "Crawler":
+          "Crawler width | 	(mm) | 	550
+          "Crawler ground contact length | (mm) | 1909",
+          "Average ground pressure | (kPa) | 	18.7"
+        ]
     }
   },
   {
