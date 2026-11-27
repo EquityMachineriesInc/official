@@ -58,7 +58,7 @@ const products = [
           "Crawler width | 	(mm) | 	550
           "Crawler ground contact length | (mm) | 1909",
           "Average ground pressure | (kPa) | 	18.7"
-        ]
+        ],
     }
   },
   {
